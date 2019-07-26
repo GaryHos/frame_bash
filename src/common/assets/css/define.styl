@@ -1,0 +1,117 @@
+// 字号
+$xs = 22px; // 最小的说明文本
+$s = 24px; // 辅助文本
+$m = 28px; // 次要文本
+$l = 32px; // 大标题及主要文本
+$xl = 36px; // 主标题及主按钮
+
+// 标准色
+$red = #f56449; // 红色及错误(error)
+$pink = #ff6e5b;
+$yellow = #ffae00; // 黄色及警告(warn)
+$green = #00994f; // 绿色及成功(success)
+$blue = #4ca0ff;
+$white = #ffffff;
+
+// 灰度
+$gray_bg = #f2f2f2; // 灰色背景
+$gray_border = #eee; // 灰色边框
+$gray_divide = #d8d8d8; // 灰色分隔线
+$gray_content = #bfbfbf; // 灰色内容
+
+// 文字
+$t_primary = #333333; // 重要文字
+$t_normal = #666666; // 常规文字
+$t_description = #999999; // 描述文字
+$t_placeholder = #bfbfbf; // 提示文字
+
+$transition_time = 0.3s;
+
+/**
+ * 容器标准边距
+ * 栗子: margin: 0 $edge; | padding: 0 $edge; | margin-bottom: $edge;
+ */
+$edge = 0.625rem;
+
+// 圆角
+$round(dir = all) {
+  if (dir == all) {
+    border-radius: 0.25rem;
+  } else {
+    border-${dir}-radius: 0.25rem;
+  }
+}
+
+// 清除浮动
+$clear() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// 边线
+$border(dir='',color='', style='') {
+  color = color || $gray_border;
+  style = style || solid
+  dir = dir && '-' + dir;
+  border{dir}: 1Px style color;
+}
+
+// 文本溢出
+$textwrap() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文本超过指定行数隐藏, 显示省略符号
+$textwrapNum(num = 1) {
+  display: -webkit-box;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  -webkit-line-clamp: num;
+  overflow: hidden;
+}
+
+
+// 背景色白->暗
+$tWhite() {
+  transition: $transition_time background;
+  &:active {
+    background: #dedede;
+  }
+}
+
+// 背景色绿->深绿
+$tGreen() {
+  transition: $transition_time background;
+  &:active {
+    background: #006835;
+  }
+}
+
+$tBlack() {
+  transition: $transition_time background;
+  &:active {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+
+// 整体变暗过渡效果
+$tOpacity() {
+  transition: $transition_time opacity;
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+// 文字变暗过渡效果
+$tFont(rgba = rgba(255, 255, 255, 0.5)) {
+  transition: all $transition_time;
+  &:active {
+    color: rgba !important;
+  }
+}
